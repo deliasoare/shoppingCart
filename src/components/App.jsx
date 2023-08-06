@@ -1,10 +1,10 @@
-import { Link, Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 
 import Header from './Header';
 function App() {
 
   return (
-    <div style={{height:'200vh'}}>
+    <div>
       <Header />
       <Outlet />
       <p>footer</p>
