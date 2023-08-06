@@ -1,7 +1,28 @@
+ul {
+    list-style: none;
+}
+
 .unscrolledHeader {
     background: $templateColor;
     height: 150px;
     position: relative;
+    .headerUpperSection {
+        position: relative;
+        padding: 0.5em;
+        height: 90px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .titleSection {
+            font-size: 1.7rem;
+            > a {
+                text-decoration: none;
+            }
+            b {
+                font-size: 2.2rem;
+            }
+        }
+    }
     .headerLowerSection {
         background: $templateSecondColor;
         height: 60px;
@@ -9,6 +30,10 @@
         bottom: 0;
         width: 100%;
         color: white;
+    }
+    .shoppingCart {
+        position: absolute;
+        right: 5px;
     }
 }
 
@@ -21,5 +46,5 @@
 
 .icon {
     aspect-ratio: 488/433.78;
-    max-height:30px;
+    height:30px;
 }

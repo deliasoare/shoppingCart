@@ -43,7 +43,7 @@ const Header = () => {
                 <div className="unscrolledHeader"> 
                     <ul className='headerUpperSection'>
                         <li className='titleSection'>
-                            <Link to="/"> MiscTech </Link>
+                            <Link to="/"> <b>M</b>isc<b>T</b>ech </Link>
                         </li>
                         <li className='shoppingCart'>
                             <Link to="/shoppingCart">
