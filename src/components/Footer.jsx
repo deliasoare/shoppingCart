@@ -5,7 +5,7 @@ const Footer = () => {
     }
     return (
         <div className="footer">
-            <button onClick={backToTop}>Back to top</button>
+            <button className='topBtn' onClick={backToTop}>Back to top</button>
             <div className="footerInfo">
                 <div className='aboutUs'>
                     <a href="" className="header aboutUsHeader"><b>A</b>bout us</a>
