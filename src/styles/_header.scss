@@ -1,0 +1,25 @@
+.unscrolledHeader {
+    background: $templateColor;
+    height: 150px;
+    position: relative;
+    .headerLowerSection {
+        background: $templateSecondColor;
+        height: 60px;
+        position:absolute;
+        bottom: 0;
+        width: 100%;
+        color: white;
+    }
+}
+
+.scrolledHeader {
+    background: $templateSecondColor;
+    height: 60px;
+    position: sticky;
+    top: 0;
+}
+
+.icon {
+    aspect-ratio: 488/433.78;
+    max-height:30px;
+}
