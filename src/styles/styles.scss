@@ -1,15 +1,21 @@
 @import '_variables.scss';
 
 @import '_header.scss';
+@import '_footer.scss';
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    list-style: none;
 }
 
 .content {
     display: grid;
-    grid-template-rows: 150px 1fr 45px;
+    grid-template-rows: 150px 1fr 100px;
     height: 200vh;
+    a {
+        color: $templateSecondColor;
+        text-decoration: underline;
+    }
 }
