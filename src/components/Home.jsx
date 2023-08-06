@@ -1,8 +1,6 @@
 import { Link } from 'react-router-dom';
 
 function Home() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
       <>This is the home section.</>
@@ -15,3 +13,5 @@ function Home() {
     </>
   )
 }
+
+export default Home;

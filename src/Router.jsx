@@ -8,21 +8,27 @@ import Item from './components/Item';
 const Router = () => {
     const router = createBrowserRouter([
         {
-            index: true,
-            element: <Home />
-        },
-        {
-            path: '/items',
-            element: <Items />,
-        },
-        {
-            path: '/items/:id',
-            element: <Item />
-        },
-        {
-            path: '/shoppingCart',
-            element: <ShoppingCart />
+            element: <App />,
+            children: [
+                {
+                    index: true,
+                    element: <Home />
+                },
+                {
+                    path: '/items',
+                    element: <Items />,
+                },
+                {
+                    path: '/items/:id',
+                    element: <Item />
+                },
+                {
+                    path: '/shoppingCart',
+                    element: <ShoppingCart />
+                }
+            ]
         }
+        
     ])
 
     return (
