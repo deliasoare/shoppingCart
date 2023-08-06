@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import shoppingCart from '../assets/shpCart.svg';
+import shoppingCartBlk from '../assets/shpCartBlack.svg';
+import shoppingCartWht from '../assets/shpCartWhite.svg';
 import { Link } from 'react-router-dom';
 
 
@@ -8,7 +9,7 @@ const Header = () => {
 
     useEffect(() => {
         const handleScroll = () => {
-            if (window.scrollY > 160)
+            if (window.scrollY > 150)
                 setIsScrolled(true);
             else 
                 setIsScrolled(false);
@@ -25,19 +26,17 @@ const Header = () => {
         <>
             { isScrolled ? (
                 <div className="scrolledHeader"> 
-                    <ul className="headerContent">
-                        <li className="titleSection">
-                            <Link to="/"> MiscTech </Link>
-                        </li>
-                        <li className='itemSection'>
-                            <Link to="/items"> Items </Link>
-                        </li>
-                        <li className='shoppingCart'>
-                            <Link to="/shoppingCart">
-                                <img className="icon cartIcon" src={shoppingCart} />
-                            </Link>
-                        </li>
-                    </ul>
+                    <li className="titleSection">
+                        <Link to="/"> <b>M</b>isc<b>T</b>ech </Link>
+                    </li>
+                    <div className="categories">
+                        CATEGORIES
+                    </div>
+                    <li className='shoppingCart'>
+                        <Link to="/shoppingCart">
+                            <img className="icon cartIcon" src={shoppingCartWht} />
+                        </Link>
+                    </li>
                 </div>
             ) : (
                 <div className="unscrolledHeader"> 
@@ -47,7 +46,7 @@ const Header = () => {
                         </li>
                         <li className='shoppingCart'>
                             <Link to="/shoppingCart">
-                                <img className="icon cartIcon" src={shoppingCart} />
+                                <img className="icon cartIcon" src={shoppingCartBlk} />
                             </Link>
                         </li>
                     </ul>
