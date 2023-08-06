@@ -1,14 +1,14 @@
-import { useState } from 'react'
 import { Link, Outlet } from 'react-router-dom';
 
+import Header from './Header';
 function App() {
 
   return (
-    <>
-      <p>header</p>
+    <div style={{height:'200vh'}}>
+      <Header />
       <Outlet />
       <p>footer</p>
-    </>
+    </div>
   )
 }
 
