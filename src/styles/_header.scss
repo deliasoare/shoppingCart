@@ -29,7 +29,10 @@ ul {
         position:absolute;
         bottom: 0;
         width: 100%;
-        color: white;
+        color: $templateColor;
+        display: flex;
+        justify-content: center;
+        align-items:center ;
     }
     .shoppingCart {
         position: absolute;
