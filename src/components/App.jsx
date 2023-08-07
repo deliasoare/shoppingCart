@@ -1,16 +1,13 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import DataContext from './DataContext';
 import { Outlet } from 'react-router-dom';
 
 import Header from './Header';
 import Footer from './Footer';
 import '../styles/styles.scss';
 
-const categoryFetch = fetch('https://fakestoreapi.com/products/categories', { mode: 'cors'})
-const productFetch = fetch('https://fakestoreapi.com/products', { mode: 'cors' });
-
 function App() {
-  const [categories, setCategories] = useState([]);
-  const [products, setProducts] = useState([]);
+  const [data, setData] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -18,7 +15,7 @@ function App() {
     const awaitData = async () => {
       try {
         const res = await Promise.all([
-          fetch('https://fakestoreapi.com/products/categories', { mode: 'cors'}),
+          fetch('https://fakestoreapi.com/products/categories', { mode: 'cors' }),
           fetch('https://fakestoreapi.com/products', { mode: 'cors' })
         ])
 
@@ -27,22 +24,19 @@ function App() {
             throw new Error(`error ${r.status}`);
         })
         
-        const data = res.map(r => r.json())
+        const dataRes = res.map(r => r.json())
 
         const [categoryResult, productResult] = await Promise.all(
-          data
+          dataRes
         );
         
-        setCategories(categoryResult);
-        setProducts(productResult);
+        setData({categories: categoryResult, products: productResult});
         setError(null);
 
-        console.log({categoryResult, productResult});
       }
       catch(err) {
         setError(err.message);
-        setCategories(null);
-        setProducts(null);
+        setData(null);
       }
       finally {
         setLoading(false);
@@ -51,13 +45,21 @@ function App() {
     awaitData();
   }, [])
   return (
-    <div className='content'>
-      <Header />
-      <div className='main'>
-        <Outlet />
-      </div>
-      <Footer />
-    </div>
+    <>
+    {loading ? 
+        <p>Loading</p>
+        :
+        <DataContext.Provider value={data}>
+        <div className='content'>
+          <Header />
+          <div className='main'>
+            <Outlet />
+          </div>
+          <Footer />
+        </div>
+      </DataContext.Provider>
+      }
+    </>
   )
 }
 

@@ -1,3 +1,24 @@
+@media (max-width: 400px) {
+    .scrolledHeaderCategory, .unscrolledHeaderCategory {
+        font-size: 0.6rem;
+    }
+}
+@media (max-width: 450px) {
+    .scrolledHeaderCategory, .unscrolledHeaderCategory {
+        font-size: 0.8rem;
+    }
+}
+@media (max-width: 750px) {
+    .scrolledHeaderCategory, .unscrolledHeaderCategory {
+        font-size: 1rem;
+    }
+}
+@media (max-width: 550px) {
+    .scrolledHeaderCategory, .unscrolledHeaderCategory {
+        font-size: 0.9rem;
+    }
+}
+
 .unscrolledHeader {
     background: $templateColor;
     height: 150px;
@@ -33,6 +54,9 @@
         display: flex;
         justify-content: center;
         align-items:center ;
+        gap:5%;
+        text-transform: uppercase;
+        padding: 0.5em;
     }
 }
 
@@ -68,4 +92,7 @@
 }
 .icon {
     aspect-ratio: 488/433.78;
+}
+.scrolledHeaderCategory, .unscrolledHeaderCategory {
+
 }

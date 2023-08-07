@@ -1,12 +1,14 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import shoppingCartBlk from '../assets/shpCartBlack.svg';
 import shoppingCartWht from '../assets/shpCartWhite.svg';
 import { Link } from 'react-router-dom';
-
+import DataContext from './DataContext';
 
 const Header = () => {
     const [isScrolled, setIsScrolled] = useState(false);
+    const data = useContext(DataContext);
 
+    console.log(data);
     useEffect(() => {
         const handleScroll = () => {
             if (window.scrollY > 150)
@@ -30,7 +32,15 @@ const Header = () => {
                         <Link to="/"> <b>M</b>isc<b>T</b>ech </Link>
                     </li>
                     <div className="categories">
-                        CATEGORIES
+                        {
+                            data.categories.map(category => {
+                                return (
+                                    <li key={category} className="scrolledHeaderCategory">
+                                        <a>{category}</a>
+                                    </li>
+                                )
+                            })
+                        }
                     </div>
                     <li className='shoppingCart'>
                         <Link to="/shoppingCart">
@@ -51,7 +61,14 @@ const Header = () => {
                         </li>
                     </ul>
                     <ul className='headerLowerSection'>
-                        CATEGORIES
+                        {data.categories.map(category => {
+                                return (
+                                    <li key={category} className="unscrolledHeaderCategory">
+                                        <a>{category}</a>
+                                    </li>
+                                )
+                            })
+                        }
                     </ul>
                  </div>
             )}
