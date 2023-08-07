@@ -8,7 +8,6 @@ const Header = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const data = useContext(DataContext);
 
-    console.log(data);
     useEffect(() => {
         const handleScroll = () => {
             if (window.scrollY > 150)
@@ -35,9 +34,7 @@ const Header = () => {
                         {
                             data.categories.map(category => {
                                 return (
-                                    <li key={category} className="scrolledHeaderCategory">
-                                        <a>{category}</a>
-                                    </li>
+                                        <a key={category} className="scrolledHeaderCategory">{category}</a>
                                 )
                             })
                         }
