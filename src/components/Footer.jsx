@@ -30,6 +30,9 @@ const Footer = () => {
 
                 </div>
             </div>
+            <div href='https://github.com/deliasoare' className='copyrightFooter'>
+                <a href='https://github.com/deliasoare'>@deliasoare</a>
+            </div>
         </div>
     );
 }

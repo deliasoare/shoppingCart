@@ -1,22 +1,28 @@
-@media (max-width:400px) {
-    .footerInfo {
-        padding: 0.5em !important;
-    }
-}
-
 .footer {
-        .topBtn {
-            cursor: pointer;
-            width: 100%;
-            outline: none;
-            border: none;
-            padding: 0.6em;
-            background: $templateSecondColor;
+    .topBtn, .copyrightFooter {
+        width: 100%;
+        height: 35px;
+        outline: none;
+        border: none;
+        padding: 0.6em;
+        background: $templateSecondColor;
+        color: $templateText;
+    }
+    .topBtn {
+        cursor: pointer;
+    }
+    .copyrightFooter {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        a {
+            text-decoration: none;
             color: $templateText;
         }
+    }
     .footerInfo {
         background: $templateColor;
-        padding: 1em;
+        padding: 2.1em 0;
         display: flex;
         justify-content: center;
         align-items: stretch;
