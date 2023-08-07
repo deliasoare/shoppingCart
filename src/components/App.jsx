@@ -4,6 +4,7 @@ import { Outlet } from 'react-router-dom';
 
 import Header from './Header';
 import Footer from './Footer';
+import LoadingScreen from './LoadingScreen'
 import '../styles/styles.scss';
 
 function App() {
@@ -47,7 +48,7 @@ function App() {
   return (
     <>
     {loading ? 
-        <p>Loading</p>
+        <LoadingScreen />
         :
         <DataContext.Provider value={data}>
         <div className='content'>

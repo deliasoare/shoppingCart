@@ -1,0 +1,35 @@
+// Loading screen
+.loadingBackground {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: $transparentBg;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .loadingModal {
+        width: 200px;
+        height: 200px;
+        border: 40px solid $templateText;
+        border-top: 40px solid $templateColor;
+        border-radius: 50%;
+        position: absolute;
+        animation: {
+            name: loadingScreen;
+            duration: 600ms;
+            fill-mode: forwards;
+            timing-function: ease-in-out;
+            iteration-count: infinite;
+        }
+    }
+}
+@keyframes loadingScreen {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
