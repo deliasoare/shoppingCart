@@ -12,5 +12,6 @@
 
 .content {
     display: grid;
+    grid-template-rows: 150px 1fr 243px;
     min-height: 100vh;
 }
