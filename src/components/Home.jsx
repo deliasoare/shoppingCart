@@ -7,6 +7,10 @@ function Home() {
       <div className='imageSlider'>
         <ImageSlider />
       </div>
+      <div className='writing'>
+        <p className='leftAlignedText para'>The best deals.</p>
+        <p className='rightAlignedText para'>The best experience.</p>
+      </div>
     </>
   )
 }

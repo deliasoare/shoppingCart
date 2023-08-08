@@ -61,7 +61,7 @@ const ImageSlider = () => {
     }
 
     return (
-        <div className='min-w-[250px] min-h-[400px] h-[850px] w-full m-auto py-4 px-4 relative group'>
+        <div className='min-w-[250px] min-h-[400px] h-[800px] w-full m-auto py-4 px-4 relative group'>
             <div style={{backgroundImage: `url(${slides[currentIndex].url})`}} className="imageSlider w-full h-full  rounded-2xl bg-center bg-cover duration-500"></div>
             {/* Left arrow */}
             <button className='absolute right-20 p-3 text-lg top-[85%] font-semibold bg-[rgb(250,133,0)] rounded-md hover:scale-110 hover:rotate-[-6deg] duration-500'>SHOP NOW</button>
