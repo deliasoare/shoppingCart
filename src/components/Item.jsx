@@ -1,16 +1,17 @@
 import { Link, useParams } from 'react-router-dom';
 
+import { BsArrowReturnLeft } from 'react-icons/bs';
 const Item = () => {
     const id = useParams();
     console.log(id);
     return (
-        <>
-            <p>Shopping Item { id.id }</p>
-            <p>
-                <Link to="/items">Back</Link>
-            </p>
-        </>
+        <div className='itemSection'>
+            <Link className='backButton' to='/items/'>
+                <BsArrowReturnLeft /> Back
+            </Link>
+        </div>
     );
 }
+
 
 export default Item;

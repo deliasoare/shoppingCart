@@ -31,7 +31,7 @@ function App() {
           dataRes
         );
         
-        setData({categories: categoryResult, products: productResult});
+        setData({categories: categoryResult, products: productResult, shoppingCart: []});
         setError(null);
 
       }
@@ -45,12 +45,13 @@ function App() {
     }
     awaitData();
   }, [])
+
   return (
     <>
     {loading ? 
         <LoadingScreen />
         :
-        <DataContext.Provider value={data}>
+        <DataContext.Provider value={[data, setData]}>
         <div className='content'>
           <Header />
           <div className='main'>

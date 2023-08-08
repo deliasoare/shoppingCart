@@ -2,10 +2,35 @@ import { Link, useParams } from 'react-router-dom';
 import { useState, useEffect, useContext } from 'react';
 import DataContext from './DataContext';
 
+import { BiShoppingBag } from 'react-icons/bi';
 import { BsArrowReturnLeft } from 'react-icons/bs';
 
+const addToCart = (data, setData, product) => {
+    if (data.shoppingCart.filter(item => item.id === product.id).length > 0) {
+        let aux = data.shoppingCart;
+        aux.map((item, itemIndex) => {
+            if (item.id === product.id) {
+                item = {...item, quantity: item.quantity + 1};
+                aux[itemIndex] = item;
+            }
+        });
+        setData({
+            ...data,
+            shoppingCart: aux
+        });
+        return;
+    }
+    let productCopy = {...product};
+    productCopy.quantity = 1;
+    setData({
+        ...data,
+        shoppingCart: data.shoppingCart.concat(productCopy)
+    })
+}
+
 const Items = () => {
-    const data = useContext(DataContext); 
+    const data = useContext(DataContext)[0]; 
+    const setData = useContext(DataContext)[1];
     const products = data.products;
     const categories = data.categories;
     const [categoryProducts, setCategoryProducts] = useState([]);
@@ -19,7 +44,7 @@ const Items = () => {
         aux[0] = aux[0].toUpperCase();
         capitalizedCategory = aux.join("");
         if (!categories.includes(category))
-            throw new Error('this ain\'t good');
+            throw new Error();
     }
 
     const rating = (rating) => {
@@ -31,7 +56,6 @@ const Items = () => {
             '#4d7c0f'
         ]
         let that = ([...Array(5)]).map((star, starIndex) => {
-            console.log(starIndex, parseInt(rating));
             if (starIndex < parseInt(rating)) {
                 return (
                     <div style={{background: colors[parseInt(rating)]}} className='star fullStar'>
@@ -42,7 +66,6 @@ const Items = () => {
             else if (starIndex === parseInt(rating)) {
                 let nr = String(rating).split("");
                 let decimalPoint = Number(nr[2]) ? Number([nr[2]]) : 0;
-                console.log(decimalPoint * 10);
                 return (
                     <div style={{background: `linear-gradient(to right,${colors[parseInt(rating)]} ${decimalPoint * 10}%, 0%, #bbbac0 ${100 - (decimalPoint * 10)}%)`}} className='star halfStar'>
                         <span>★</span>
@@ -68,8 +91,7 @@ const Items = () => {
             })
         }
     }, [category])
-
-
+    let allProducts = category === 'All Items' ? products : categoryProducts
     return (
         <div className='itemsSection'>
             <Link className='backButton' to='/'>
@@ -77,35 +99,21 @@ const Items = () => {
             </Link>
             <div className='categoryTitle'>{ category !== "All Items" ? capitalizedCategory : category }</div>
             <div className='categoryItems'>
-                {category === 'All Items' ?
-                    products.map(product => {
-                        console.log(product);
+                    {allProducts.map(product => {
                         return (
-                            <div className='item'>
+                            <a key={product.id} href={`/item/${product.id}`} className='item'>
                                 <div className='itemImage'>
                                     <img src={product.image}/>  
                                 </div>
                                 <div className="itemTitle">{product.title}</div>
                                 <div className='itemRating'>
-                                    <div className="stars">{rating(product.rating.rate)}</div>
+                                    <div className="stars">{rating(product.rating.rate)} ({product.rating.count}) </div>
                                 </div>
                                 <div className="itemPrice">${product.price}</div>
-                            </div>
-                        );
-                    })
-                    :
-                    categoryProducts.map(product => {
-                        return (
-                            <div className='item'>
-                                <div className='itemImage'>
-                                    <img src={product.image}/>  
+                                <div className="addToCart" onClick={(e) => {e.preventDefault(); addToCart(data, setData, product)}}>
+                                    <BiShoppingBag /> <span>Add to cart</span>
                                 </div>
-                                <div className="itemTitle">{product.title}</div>
-                                <div className='itemRating'>
-                                    <div className="stars">{rating(product.rating.rate)}</div>
-                                </div>
-                                <div className="itemPrice">${product.price}</div>
-                            </div>
+                            </a>
                         );
                     })
                 }

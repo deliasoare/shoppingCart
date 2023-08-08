@@ -4,9 +4,17 @@ import shoppingCartWht from '../assets/shpCartWhite.svg';
 import { Link } from 'react-router-dom';
 import DataContext from './DataContext';
 
+
+const updateData = (data, setData, product) => {
+    setData({
+        ...data,
+        shoppingCart: data.shoppingCart.concat(product)
+    })
+}
+
 const Header = () => {
     const [isScrolled, setIsScrolled] = useState(false);
-    const data = useContext(DataContext);
+    const data = useContext(DataContext)[0];
 
     useEffect(() => {
         const handleScroll = () => {

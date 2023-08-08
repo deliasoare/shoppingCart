@@ -1,4 +1,4 @@
-.itemsSection {
+.itemsSection, .itemSection {
     padding: 1em;
     .backButton {
         font-size: 1.8rem;
@@ -19,8 +19,11 @@
         gap: 30px;
         .item {
             width: 250px;
-            padding: 1em;
+            padding: 2em 1em;
             border: 2px solid $templateSecondColor;
+            display: grid;
+            position: relative;
+
             .itemImage {
                 margin-top:-10px;
                 img {
@@ -41,6 +44,17 @@
                         background: #bbbac0;
                     }
                 }
+            }
+            .addToCart {
+                position: absolute;
+                padding: 0.5em;
+                bottom: -12px;
+                border-radius: 5px;
+                background: $templateColor;
+                display: flex;
+                align-items: center;
+                gap: 5px;
+                left: 65px;
             }
         }
     }
