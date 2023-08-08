@@ -1,4 +1,8 @@
-
+.home {
+    > div + div {
+        margin-top: 5%;
+    }
+}
 .writing {
     padding: 5em;
     display: grid;
@@ -47,7 +51,38 @@
         }
         .sectionText {
             color: gray;
-            
+
         }
+    }
+}
+
+.testimonial {
+    background: rgba(250, 133, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 3em;
+    min-height: 300px;
+    width: 70%;
+    min-width: 400px;
+    margin: 0 auto;
+    border-radius: 15px;
+    .testimonialText {
+        span {
+            padding: 0 5em;
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+        .rightQuotes {
+            float:right;
+            margin-top: 5px;
+        }
+    }
+    .testimonialAuthor {
+        position: absolute;
+        bottom: 15px;
+        right: 15px;
+        font-weight: bolder;
     }
 }

@@ -4,10 +4,12 @@ import Lights from '../assets/lights.png';
 import Camera from '../assets/camera.png';
 import Action from '../assets/action.png';
 
+import { FaQuoteLeft, FaQuoteRight } from 'react-icons/fa';
+
 import ImageSlider from './ImageSlider';
 function Home() {
   return (
-    <>
+    <div className='home'>
       <div className='imageSlider'>
         <ImageSlider />
       </div>
@@ -32,7 +34,21 @@ function Home() {
               <p className='sectionText'>It is your time to shine and take action into your own hands by picking what you feel suits you best. Keep in mind that having it delivered is just one click away!</p>
         </div>
       </div>
-    </>
+      <div className='testimonial'>
+        <div className='testimonialText'>
+          <p>
+            <div className='leftQuotes'>
+              <FaQuoteLeft size={30}/>
+            </div>
+            <span>Although one may say the variety of products isn't exactly top notch, I'd say that's exactly the intention of MT. That's the point. The best is already selected.</span>
+            <div className='rightQuotes'>
+              <FaQuoteRight size={30} />
+            </div>
+          </p>
+        </div>
+        <div className='testimonialAuthor'>-Jane Doe</div>
+      </div>
+    </div>
   )
 }
 
