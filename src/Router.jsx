@@ -19,7 +19,11 @@ const Router = () => {
                     element: <Items />,
                 },
                 {
-                    path: '/items/:id',
+                    path: '/items/:category',
+                    element: <Items />
+                },
+                {
+                    path: '/items/:category/:id',
                     element: <Item />
                 },
                 {

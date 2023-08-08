@@ -37,13 +37,13 @@ function Home() {
       <div className='testimonial'>
         <div className='testimonialText'>
           <p>
-            <div className='leftQuotes'>
+            <span className='leftQuotes'>
               <FaQuoteLeft size={30}/>
-            </div>
+            </span>
             <span>Although one may say the variety of products isn't exactly top notch, I'd say that's exactly the intention of MT. That's the point. The best is already selected.</span>
-            <div className='rightQuotes'>
+            <span className='rightQuotes'>
               <FaQuoteRight size={30} />
-            </div>
+            </span>
           </p>
         </div>
         <div className='testimonialAuthor'>-Jane Doe</div>

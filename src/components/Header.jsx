@@ -31,10 +31,11 @@ const Header = () => {
                         <Link to="/"> <b>M</b>isc<b>T</b>ech </Link>
                     </li>
                     <div className="categories">
+                        <Link to='/items' key='all' className='scrolledHeaderCategory'>ALL</Link>
                         {
                             data.categories.map(category => {
                                 return (
-                                        <a key={category} className="scrolledHeaderCategory">{category}</a>
+                                        <Link to={`/items/${category}`} key={category} className="scrolledHeaderCategory">{category}</Link>
                                 )
                             })
                         }
@@ -58,10 +59,11 @@ const Header = () => {
                         </li>
                     </ul>
                     <ul className='headerLowerSection'>
+                        <Link key='all' to='/items' className='unscrolledHeaderCategory'>ALL</Link>
                         {data.categories.map(category => {
                                 return (
                                     <li key={category} className="unscrolledHeaderCategory">
-                                        <a>{category}</a>
+                                        <Link to={`/items/${category}`}>{category}</Link>
                                     </li>
                                 )
                             })
