@@ -3,17 +3,21 @@ import { useContext } from 'react';
 import DataContext from './DataContext';
 
 import { BsArrowReturnLeft } from 'react-icons/bs';
+
 const Items = () => {
     const data = useContext(DataContext); 
     const products = data.products;
     const categories = data.categories;
-    console.log(categories);
     let category = useParams();
     let categoryProducts = [];
-    console.log(products);
+    let capitalizedCategory = category.category;
+
     if (!category.category) 
         category = 'All Items';
     if (category !== 'All Items') {
+        let aux = capitalizedCategory.split("");
+        aux[0] = aux[0].toUpperCase();
+        capitalizedCategory = aux.join("");
         if (!categories.includes(category.category))
             throw new Error('this ain\'t good');
         products.map(product => {
@@ -21,12 +25,13 @@ const Items = () => {
                 categoryProducts = [...categoryProducts, product];
         })
     }
+
     return (
         <div className='itemsSection'>
             <Link className='backButton' to='/'>
                 <BsArrowReturnLeft /> Back
             </Link>
-            <div className='categoryTitle'>{ category.category ? category.category : category }</div>
+            <div className='categoryTitle'>{ category.category ? capitalizedCategory : category }</div>
             <div className='categoryItems'></div>
         </div>
     );
