@@ -22,3 +22,32 @@
         font-size: 1.8rem !important;
     }
 }
+
+.threePartSection {
+    display: flex;
+    flex-wrap: wrap;
+    gap:50px;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    .section {
+        display: flex;
+        width: 350px;
+        justify-content: center;
+        flex-direction: column;
+        .sectionImg {
+                background-position: center;
+                height: 250px;
+                aspect-ratio: 1.5/1;
+        }
+        .sectionHeader {
+            text-align: center;
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: $templateColor;
+        }
+        .sectionText {
+            color: gray;
+            
+        }
+    }
+}
