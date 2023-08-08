@@ -2,3 +2,7 @@ $templateColor: rgba(250, 133, 0, 1);
 $templateSecondColor: rgba(11, 11, 11, 1);
 $templateText: #fff;;
 $transparentBg: rgba(0, 0, 0, 0.4);
+
+:root {
+    --imageSliderHeight: max(80vh, 400px);
+}
