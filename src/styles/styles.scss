@@ -4,16 +4,29 @@
 @import '_footer.scss';
 @import '_misc.scss';
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     list-style: none;
 }
+html, body, #root {
+    width: 100%;
+    height: 100%;
+}
 
+@media (max-width: 380px) {
+    .content {
+        grid-template-rows: 150px 1fr 243px;
+    }
+}
 .content {
+    min-height: 100%;
+    min-width: 100%;
     display: grid;
-    grid-template-rows: 150px 1fr 243px;
-    min-height: 100vh;
-    height: 200vh;
+    grid-template-rows: 150px 1fr 412px;
 }
