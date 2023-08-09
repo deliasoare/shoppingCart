@@ -34,6 +34,12 @@ const ShoppingCart = () => {
         setData({...data[0], shoppingCart: shoppingCartCopy});
     }
 
+    const deleteItem = (product) => {
+        let shoppingCartCopy = [...data[0].shoppingCart];
+        shoppingCartCopy = shoppingCartCopy.filter(item => item.id !== product.id)
+        setData({...data[0], shoppingCart: shoppingCartCopy});
+    }
+
     return (
         <div className='shoppingCartContent'>
             <p className='cart'>Cart</p>
@@ -56,7 +62,7 @@ const ShoppingCart = () => {
                                                 <div className='quantity'>{item.quantity}</div>
                                                 <div onClick={() => {increaseQuantity(item);}} className='plusQuantity'>+</div>
                                             </div>
-                                            <div className='deleteItem'>Delete</div>
+                                            <div onClick={() => {deleteItem(item)}} className='deleteItem'>Delete</div>
                                         </div>
                                     </p>
                                 </div>
