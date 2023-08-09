@@ -36,7 +36,7 @@ const rating = (rating) => {
         '#bef264',
         '#4d7c0f'
     ]
-    let that = ([...Array(5)]).map((star, starIndex) => {
+    let starsDiv = ([...Array(5)]).map((star, starIndex) => {
         if (starIndex < parseInt(rating)) {
             return (
                 <div style={{background: colors[parseInt(rating)]}} className='star fullStar'>
@@ -60,7 +60,13 @@ const rating = (rating) => {
                 </div>
             );
     })
-    return that;
+    return starsDiv;
+}
+const capitalize = (word) => {
+    let aux = word.split("");
+    aux[0] = aux[0].toUpperCase();
+    word = aux.join("");
+    return word;
 }
 
 export const Items = () => {
@@ -70,14 +76,12 @@ export const Items = () => {
     const categories = data.categories;
     const [categoryProducts, setCategoryProducts] = useState([]);
     let category = useParams().category;
-    let capitalizedCategory = category;
+    let capitalizedCategory;
 
     if (!category) 
         category = 'All Items';
     if (category !== 'All Items') {
-        let aux = capitalizedCategory.split("");
-        aux[0] = aux[0].toUpperCase();
-        capitalizedCategory = aux.join("");
+       capitalizedCategory = capitalize(category);
         if (!categories.includes(category))
             throw new Error();
     }
@@ -141,8 +145,8 @@ export const Item = () => {
                 <div className='itemInfoContainer'>
                     <p className='itemTitle'>{item.title}</p>
                     <p className='itemCategory'>
-                        Category: 
-                        <Link to={`/items/${item.category}`}>----</Link>
+                        Category:
+                        <Link to={`/items/${item.category}`}>     {capitalize(item.category)}</Link>
                     </p>
                     <div className='itemRating'>
                         <div className="stars">{rating(item.rating.rate)} ({item.rating.count})</div>
@@ -151,7 +155,7 @@ export const Item = () => {
                     <div className="addToCart" onClick={(e) => {e.preventDefault(); addToCart(data, setData, product)}}>
                         <BiShoppingBag /> <span>Add to cart</span>
                     </div>
-                    <div className='itemDescription'><b>Description:</b>{item.description}</div>
+                    <div className='itemDescription'><b>Description:</b>   {item.description}</div>
                 </div>
             </div>
         </div>
