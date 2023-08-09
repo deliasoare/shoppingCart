@@ -49,7 +49,6 @@ const ImageSlider = () => {
             setCurrentIndex(prevIndex => prevIndex - 1);
     }
     const onRightArrow = () => {
-        console.log(currentIndex);
         if (currentIndex === slides.length - 1)
             setCurrentIndex(0);
         else

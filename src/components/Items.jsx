@@ -123,13 +123,19 @@ export const Items = () => {
 }
 
 export const Item = () => {
-    const id = useParams();
+    const id = useParams().id;
+    const products = useContext(DataContext)[0].products;
+    const item = products.filter(product => Number(product.id) === Number(id))[0];
+    if (item === undefined)
+        throw new Error();
     return (
         <div className='itemSection'>
             <Link className='backButton' to='/items/'>
                 <BsArrowReturnLeft /> Back
             </Link>
+            <div className='itemContainer'>
 
+            </div>
         </div>
     );
 }

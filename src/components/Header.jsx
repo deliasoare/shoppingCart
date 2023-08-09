@@ -15,7 +15,6 @@ const Header = () => {
             totalQuantity += item.quantity;
         })
         setCartIconQuantity(totalQuantity);
-        console.log('changed');
     }, [data.shoppingCart])
     useEffect(() => {
         const handleScroll = () => {
