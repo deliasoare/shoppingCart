@@ -4,18 +4,19 @@ import shoppingCartWht from '../assets/shpCartWhite.svg';
 import { Link } from 'react-router-dom';
 import DataContext from './DataContext';
 
-
-const updateData = (data, setData, product) => {
-    setData({
-        ...data,
-        shoppingCart: data.shoppingCart.concat(product)
-    })
-}
-
 const Header = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const data = useContext(DataContext)[0];
+    const [cartIconQuantity, setCartIconQuantity] = useState(0);
 
+    useEffect(() => {
+        let totalQuantity = 0;
+        data.shoppingCart.forEach(item => {
+            totalQuantity += item.quantity;
+        })
+        setCartIconQuantity(totalQuantity);
+        console.log('changed');
+    }, [data.shoppingCart])
     useEffect(() => {
         const handleScroll = () => {
             if (window.scrollY > 150)
@@ -50,7 +51,12 @@ const Header = () => {
                     </div>
                     <li className='shoppingCart'>
                         <Link to="/shoppingCart">
+                        <div className="cartIconContainer">
                             <img className="icon cartIcon" src={shoppingCartWht} />
+                            {cartIconQuantity !== 0 &&
+                                        <span className='cartIconDisplayer'>{cartIconQuantity}</span>
+                            }
+                        </div>
                         </Link>
                     </li>
                 </div>
@@ -61,8 +67,14 @@ const Header = () => {
                             <Link to="/"> <b>M</b>isc<b>T</b>ech </Link>
                         </li>
                         <li className='shoppingCart'>
-                            <Link to="/shoppingCart">
-                                <img className="icon cartIcon" src={shoppingCartBlk} />
+                            <Link to="/shoppingCart">                                
+                                <div className="cartIconContainer">
+                                    <img className="icon cartIcon"  src={shoppingCartBlk} />
+                                    {cartIconQuantity !== 0 &&
+                                        <span className='cartIconDisplayer'>{cartIconQuantity}</span>
+                                    }
+                                </div>
+                                
                             </Link>
                         </li>
                     </ul>

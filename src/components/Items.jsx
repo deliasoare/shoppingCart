@@ -7,7 +7,7 @@ import { BsArrowReturnLeft } from 'react-icons/bs';
 
 const addToCart = (data, setData, product) => {
     if (data.shoppingCart.filter(item => item.id === product.id).length > 0) {
-        let aux = data.shoppingCart;
+        let aux = [...data.shoppingCart];
         aux.map((item, itemIndex) => {
             if (item.id === product.id) {
                 item = {...item, quantity: item.quantity + 1};
@@ -129,7 +129,7 @@ export const Item = () => {
             <Link className='backButton' to='/items/'>
                 <BsArrowReturnLeft /> Back
             </Link>
-            
+
         </div>
     );
 }

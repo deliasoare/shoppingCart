@@ -13,8 +13,14 @@
         align-items: center;
         .shoppingCart {
             justify-self: flex-end;
+            margin-right: 15px;
+            width: 30px;
             .icon {
                 height:30px;
+            }
+            .cartIconDisplayer {
+                color: $templateColor;
+                background: $templateSecondColor;
             }
         }
         .titleSection {
@@ -72,9 +78,17 @@
             font-size: 1.3rem;
         }
     }
-    .icon {
-        height:25px;
-        justify-self: flex-end;
+    .shoppingCart {
+        margin-right: 15px;
+        width: 30px;
+        .icon {
+            height:25px;
+            justify-self: flex-end;
+        }
+        .cartIconDisplayer {
+            color: $templateSecondColor;
+            background: $templateText;
+        }
     }
 
     .categories {
@@ -84,6 +98,7 @@
         overflow: auto;
         white-space: nowrap;
         margin: 0 0.7em;
+        margin-right: 1em;
         text-align: center;
         a {
             display: inline-block;
@@ -99,4 +114,21 @@
 
 .scrolledHeader .scrolledHeaderCategory {
     padding: 0.5em;
+}
+
+.cartIconContainer {
+    position:relative;
+}
+.cartIconDisplayer {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.7rem;
+    font-weight: bold;
 }
