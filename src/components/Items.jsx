@@ -128,13 +128,31 @@ export const Item = () => {
     const item = products.filter(product => Number(product.id) === Number(id))[0];
     if (item === undefined)
         throw new Error();
+
     return (
         <div className='itemSection'>
             <Link className='backButton' to='/items/'>
                 <BsArrowReturnLeft /> Back
             </Link>
             <div className='itemContainer'>
-
+                <div className='itemImageContainer'>
+                    <img className='itemImage' src={item.image} />
+                </div>
+                <div className='itemInfoContainer'>
+                    <p className='itemTitle'>{item.title}</p>
+                    <p className='itemCategory'>
+                        Category: 
+                        <Link to={`/items/${item.category}`}>----</Link>
+                    </p>
+                    <div className='itemRating'>
+                        <div className="stars">{rating(item.rating.rate)} ({item.rating.count})</div>
+                    </div>
+                    <p className='itemPrice'>${item.price}</p>
+                    <div className="addToCart" onClick={(e) => {e.preventDefault(); addToCart(data, setData, product)}}>
+                        <BiShoppingBag /> <span>Add to cart</span>
+                    </div>
+                    <div className='itemDescription'><b>Description:</b>{item.description}</div>
+                </div>
             </div>
         </div>
     );
