@@ -105,7 +105,7 @@ export const Items = () => {
             <div className='categoryItems'>
                     {allProducts.map(product => {
                         return (
-                            <a key={product.id} href={`/item/${product.id}`} className='item'>
+                            <Link key={product.id} to={`/item/${product.id}`} className='item'>
                                 <div className='itemImage'>
                                     <img src={product.image}/>  
                                 </div>
@@ -117,7 +117,7 @@ export const Items = () => {
                                 <div className="addToCart" onClick={(e) => {e.preventDefault(); addToCart(data, setData, product)}}>
                                     <BiShoppingBag /> <span>Add to cart</span>
                                 </div>
-                            </a>
+                            </Link>
                         );
                     })
                 }
