@@ -69,7 +69,8 @@ const ShoppingCart = () => {
                             </div>
                         );
                     })}
-                    <div className='totalPrice'>Total price: {totalPrice.toFixed(2)}</div>
+                    <div className='totalPrice'>Total price: ${totalPrice.toFixed(2)}</div>
+                    <button className='order'>Order</button>
                 </div>  
                 :
                 <p className='emptyWarning'>
