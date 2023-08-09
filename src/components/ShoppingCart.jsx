@@ -8,6 +8,7 @@ import {BsArrowRight} from 'react-icons/bs';
 const ShoppingCart = () => {
     const data = useContext(DataContext);
     const setData = data[1]; 
+
     let totalPrice = 0;
     data[0].shoppingCart.forEach(product => {
         totalPrice += Number(product.price) * Number(product.quantity);
@@ -50,7 +51,7 @@ const ShoppingCart = () => {
                 <div className="cartItemsContainer">
                     {data[0].shoppingCart.map(item => {
                         return (
-                            <div className="cartItem">
+                            <Link to={`/item/${item.id}`} className="cartItem">
                                 <div className='cartItemImage'>
                                     <img src={item.image} />
                                 </div>
@@ -60,15 +61,15 @@ const ShoppingCart = () => {
                                         <p className="cartItemPrice">${(item.price * item.quantity).toFixed(2) } ({item.quantity})</p>
                                         <div className='cartItemQuantity'>
                                             <div className="plusMinusQuantity">
-                                                <div onClick={() => {decreaseQuantity(item);}} className='minusQuantity'>-</div>
+                                                <div onClick={(e) => {e.preventDefault(); decreaseQuantity(item);}} className='minusQuantity'>-</div>
                                                 <div className='quantity'>{item.quantity}</div>
-                                                <div onClick={() => {increaseQuantity(item);}} className='plusQuantity'>+</div>
+                                                <div onClick={(e) => {e.preventDefault(); increaseQuantity(item);}} className='plusQuantity'>+</div>
                                             </div>
-                                            <div onClick={() => {deleteItem(item)}} className='deleteItem'>Delete</div>
+                                            <div onClick={(e) => {e.preventDefault(); deleteItem(item)}} className='deleteItem'>Delete</div>
                                         </div>
                                     </p>
                                 </div>
-                            </div>
+                            </Link>
                         );
                     })}
                     <div className='totalPrice'>Total price: ${totalPrice.toFixed(2)}</div>
