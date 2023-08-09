@@ -31,31 +31,36 @@
                     height: 300px;
                 }
             }
-            .itemRating {
-                .stars {
-                    display: flex;
-                    gap: 3px;
-                    .star {
-                        width: fit-content;
-                        aspect-ratio: 1/1;
-                        color: white;
-                    }   
-                    .emptyStar {
-                        background: #bbbac0;
-                    }
-                }
-            }
             .addToCart {
                 position: absolute;
                 padding: 0.5em;
                 bottom: -12px;
-                border-radius: 5px;
-                background: $templateColor;
-                display: flex;
-                align-items: center;
                 gap: 5px;
                 left: 65px;
             }
         }
+    }
+}
+
+.item, .itemInfoContainer {
+    .itemRating {
+        .stars {
+            display: flex;
+            gap: 3px;
+            .star {
+                width: fit-content;
+                aspect-ratio: 1/1;
+                color: white;
+            }   
+            .emptyStar {
+                background: #bbbac0;
+            }
+        }
+    }
+    .addToCart {
+        border-radius: 5px;
+        background: $templateColor;
+        display: flex;
+        align-items: center;
     }
 }
