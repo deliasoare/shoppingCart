@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { BsChevronCompactLeft, BsChevronCompactRight } from 'react-icons/bs'
 import { RxDotFilled } from 'react-icons/rx';
@@ -40,6 +41,7 @@ const slides = [
 
 ]
 const ImageSlider = () => {
+    const navigate = useNavigate();
     const [currentIndex, setCurrentIndex] = useState(0);
 
     const onLeftArrow = () => {
@@ -58,12 +60,13 @@ const ImageSlider = () => {
     const goToSlide = (slideIndex) => {
         setCurrentIndex(slideIndex);
     }
+    
 
     return (
         <div className='min-w-[250px] min-h-[400px] h-[600px] w-full m-auto py-4 px-4 relative group'>
             <div style={{backgroundImage: `url(${slides[currentIndex].url})`}} className="imageSlider w-full h-full  rounded-2xl bg-center bg-cover duration-500"></div>
             {/* Left arrow */}
-            <button className='absolute right-20 p-3 text-lg top-[85%] font-semibold bg-[rgb(250,133,0)] rounded-md hover:scale-110 hover:rotate-[-6deg] duration-500'>SHOP NOW</button>
+            <button onClick={(e) => {navigate('/items')}} className='absolute right-20 p-3 text-lg top-[85%] font-semibold bg-[rgb(250,133,0)] rounded-md hover:scale-110 hover:rotate-[-6deg] duration-500'>SHOP NOW</button>
             <div className='hidden group-hover:block absolute top-[50%] translate-x-0 translate-y-[-50%] left-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer'> 
                 <BsChevronCompactLeft size={30} onClick={onLeftArrow} />
             </div>
