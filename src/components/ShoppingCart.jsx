@@ -3,6 +3,8 @@ import { useContext } from 'react';
 
 import DataContext from './DataContext';
 
+import {BsArrowRight} from 'react-icons/bs';
+
 const ShoppingCart = () => {
     const data = useContext(DataContext);
     const setData = data[1]; 
@@ -70,7 +72,7 @@ const ShoppingCart = () => {
                         );
                     })}
                     <div className='totalPrice'>Total price: ${totalPrice.toFixed(2)}</div>
-                    <button className='order'>Order</button>
+                    <button className='order'>Order <BsArrowRight size={20}/></button>
                 </div>  
                 :
                 <p className='emptyWarning'>

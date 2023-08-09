@@ -92,11 +92,21 @@
                 }
             }
         }
-        .totalPrice {
+        .totalPrice, .order {
             align-self: flex-end;
             font-size: 1.2rem;
             font-weight: 600;
             margin-right: 15%;
+        }
+        .order {
+            padding: 0.5em;
+            font-size: 1.1rem;
+            background: $templateColor;
+            border-radius: 15px;
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            border: 1px solid $templateSecondColor;
         }
     }
 }
