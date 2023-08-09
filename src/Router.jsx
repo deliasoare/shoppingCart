@@ -3,11 +3,13 @@ import App from './components/App';
 import Home from './components/Home';
 import {Items, Item} from './components/Items';
 import ShoppingCart from './components/ShoppingCart';
+import ErrorPage from './components/ErrorPage';
 
 const Router = () => {
     const router = createBrowserRouter([
         {
             element: <App />,
+            errorElement: <ErrorPage />,
             children: [
                 {
                     index: true,
