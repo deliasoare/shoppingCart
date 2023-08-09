@@ -128,7 +128,8 @@ export const Items = () => {
 
 export const Item = () => {
     const id = useParams().id;
-    const products = useContext(DataContext)[0].products;
+    const [data, setData] = useContext(DataContext); 
+    const products = data.products;
     const item = products.filter(product => Number(product.id) === Number(id))[0];
     if (item === undefined)
         throw new Error();
@@ -146,13 +147,13 @@ export const Item = () => {
                     <p className='itemTitle'>{item.title}</p>
                     <p className='itemCategory'>
                         Category:
-                        <Link to={`/items/${item.category}`}>     {capitalize(item.category)}</Link>
+                        <Link className='categoryLink' to={`/items/${item.category}`}>{capitalize(item.category)}</Link>
                     </p>
                     <div className='itemRating'>
                         <div className="stars">{rating(item.rating.rate)} ({item.rating.count})</div>
                     </div>
                     <p className='itemPrice'>${item.price}</p>
-                    <div className="addToCart" onClick={(e) => {e.preventDefault(); addToCart(data, setData, product)}}>
+                    <div className="addToCart" onClick={() => {addToCart(data, setData, item)}}>
                         <BiShoppingBag /> <span>Add to cart</span>
                     </div>
                     <div className='itemDescription'><b>Description:</b>   {item.description}</div>
