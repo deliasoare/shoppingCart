@@ -10,6 +10,30 @@ const ShoppingCart = () => {
     data[0].shoppingCart.forEach(product => {
         totalPrice += Number(product.price) * Number(product.quantity);
     })
+
+    const decreaseQuantity = (product) => {
+        if (product.quantity <= 1) return;
+        let productCopy = {...product};
+        productCopy.quantity--;
+        let shoppingCartCopy = [...data[0].shoppingCart];
+        shoppingCartCopy.forEach((item, itemIndex) => {
+            if (item.id === product.id)
+                shoppingCartCopy[itemIndex]= productCopy;
+        })
+        setData({...data[0], shoppingCart: shoppingCartCopy});
+    }
+    const increaseQuantity = (product) => {
+        if (product.quantity > 1000) return;
+        let productCopy = {...product};
+        productCopy.quantity++;
+        let shoppingCartCopy = [...data[0].shoppingCart];
+        shoppingCartCopy.forEach((item, itemIndex) => {
+            if (item.id === product.id)
+                shoppingCartCopy[itemIndex]= productCopy;
+        })
+        setData({...data[0], shoppingCart: shoppingCartCopy});
+    }
+
     return (
         <div className='shoppingCartContent'>
             <p className='cart'>Cart</p>
@@ -25,12 +49,12 @@ const ShoppingCart = () => {
                                 <div className="cartItemInfo">
                                     <p className="cartItemTitle">{item.title}</p>
                                     <p className='cartItemPQ'>
-                                        <p className="cartItemPrice">${item.price * item.quantity } ({item.quantity})</p>
+                                        <p className="cartItemPrice">${(item.price * item.quantity).toFixed(2) } ({item.quantity})</p>
                                         <div className='cartItemQuantity'>
                                             <div className="plusMinusQuantity">
-                                                <div className='minusQuantity'>-</div>
-                                                <input type='number' disabled min='1' value={item.quantity} className='quantity'></input>
-                                                <div className='plusQuantity'>+</div>
+                                                <div onClick={() => {decreaseQuantity(item);}} className='minusQuantity'>-</div>
+                                                <div className='quantity'>{item.quantity}</div>
+                                                <div onClick={() => {increaseQuantity(item);}} className='plusQuantity'>+</div>
                                             </div>
                                             <div className='deleteItem'>Delete</div>
                                         </div>
@@ -39,7 +63,7 @@ const ShoppingCart = () => {
                             </div>
                         );
                     })}
-                    <div className='totalPrice'>Total price: {totalPrice}</div>
+                    <div className='totalPrice'>Total price: {totalPrice.toFixed(2)}</div>
                 </div>  
                 :
                 <p className='emptyWarning'>
