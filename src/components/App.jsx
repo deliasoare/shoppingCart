@@ -46,9 +46,6 @@ function App() {
     awaitData();
   }, [])
 
-  useEffect(() => {
-      console.log(data.shoppingCart);
-  }, [data])
   return (
     <>
     {loading ? 
