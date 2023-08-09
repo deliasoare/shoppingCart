@@ -26,9 +26,44 @@ const addToCart = (data, setData, product) => {
         ...data,
         shoppingCart: data.shoppingCart.concat(productCopy)
     })
+}  
+
+const rating = (rating) => {
+    let colors = [
+        '#dc2626',
+        '#f87171',
+        '#facc15',
+        '#bef264',
+        '#4d7c0f'
+    ]
+    let that = ([...Array(5)]).map((star, starIndex) => {
+        if (starIndex < parseInt(rating)) {
+            return (
+                <div style={{background: colors[parseInt(rating)]}} className='star fullStar'>
+                    <span>★</span>
+                </div>
+            );
+        }
+        else if (starIndex === parseInt(rating)) {
+            let nr = String(rating).split("");
+            let decimalPoint = Number(nr[2]) ? Number([nr[2]]) : 0;
+            return (
+                <div style={{background: `linear-gradient(to right,${colors[parseInt(rating)]} ${decimalPoint * 10}%, 0%, #bbbac0 ${100 - (decimalPoint * 10)}%)`}} className='star halfStar'>
+                    <span>★</span>
+                </div>
+            );
+        }
+        else
+            return (
+                <div style={{color: 'white', background: '#bbbac0'}} className='star emptyStar'>
+                    <span>★</span>
+                </div>
+            );
+    })
+    return that;
 }
 
-const Items = () => {
+export const Items = () => {
     const data = useContext(DataContext)[0]; 
     const setData = useContext(DataContext)[1];
     const products = data.products;
@@ -47,41 +82,6 @@ const Items = () => {
             throw new Error();
     }
 
-    const rating = (rating) => {
-        let colors = [
-            '#dc2626',
-            '#f87171',
-            '#facc15',
-            '#bef264',
-            '#4d7c0f'
-        ]
-        let that = ([...Array(5)]).map((star, starIndex) => {
-            if (starIndex < parseInt(rating)) {
-                return (
-                    <div style={{background: colors[parseInt(rating)]}} className='star fullStar'>
-                        <span>★</span>
-                    </div>
-                );
-            }
-            else if (starIndex === parseInt(rating)) {
-                let nr = String(rating).split("");
-                let decimalPoint = Number(nr[2]) ? Number([nr[2]]) : 0;
-                return (
-                    <div style={{background: `linear-gradient(to right,${colors[parseInt(rating)]} ${decimalPoint * 10}%, 0%, #bbbac0 ${100 - (decimalPoint * 10)}%)`}} className='star halfStar'>
-                        <span>★</span>
-                    </div>
-                );
-            }
-            else
-                return (
-                    <div style={{color: 'white', background: '#bbbac0'}} className='star emptyStar'>
-                        <span>★</span>
-                    </div>
-                );
-        })
-        return that;
-    }
-    
     useEffect(() => {
         setCategoryProducts([]);
         if (category !== 'All Items') {
@@ -122,4 +122,14 @@ const Items = () => {
     );
 }
 
-export default Items;
+export const Item = () => {
+    const id = useParams();
+    return (
+        <div className='itemSection'>
+            <Link className='backButton' to='/items/'>
+                <BsArrowReturnLeft /> Back
+            </Link>
+            
+        </div>
+    );
+}
